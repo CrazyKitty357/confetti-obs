@@ -1,0 +1,36 @@
+<html>
+    <head></head>
+    <body>
+        <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.2.0/dist/confetti.min.js"></script>
+        <script>
+        window.addEventListener("load", () => {
+            let positionList = [
+                { x: window.innerWidth * 0.50, y: window.innerHeight * 0.60 },
+                { x: window.innerWidth * 0.25, y: window.innerHeight * 0.40 },
+                { x: window.innerWidth * 0.75, y: window.innerHeight * 0.30 },
+                { x: window.innerWidth * 0.50, y: window.innerHeight * 0.20 },
+                { x: window.innerWidth * 0.50, y: window.innerHeight * 0.50 },
+            ];
+
+            for (let i = 0; i < positionList.length; i++) {
+                setTimeout(() => {
+                    // Normal confetti for every position
+                    confetti({ position: positionList[i] });
+
+                    // Extra burst for the last position only
+                    if (i === positionList.length - 1) {
+                        confetti({
+                            position: {
+                                x: window.innerWidth * 0.5,
+                                y: window.innerHeight * 0.5
+                            },
+                            count: 200,
+                            size: 2
+                        });
+                    }
+                }, i * 250);
+            }
+        });
+        </script>
+    </body>
+</html>
